@@ -38,7 +38,7 @@ export default function App() {
       <CameraButton />
       <Camera style={styles.camera} type={type}>
         <View className='flex-row space-x-2'>
-          <TouchableOpacity className='h-14 w-14 rounded-full mt-14 left-5 opacity-75'>
+          <TouchableOpacity className='h-14 w-14 rounded-full mt-12 left-5 opacity-75'>
             <Image 
               source={{
                 uri: 'https://picsum.photos/600'
@@ -47,11 +47,17 @@ export default function App() {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity className='h-14 w-14 rounded-full mt-14 left-5 items-center justify-center'>
+          <TouchableOpacity className='h-14 w-14 rounded-full mt-12 left-5 items-center justify-center'>
             <Ionicons name='search-outline' color='white' size={30} />
           </TouchableOpacity>
         </View>
-        <View className='absolute mt-14 right-1 h-14 w-14 rounded-full items-center justify-center'>
+        <View className='absolute mt-12 right-14 h-14 w-14 rounded-full items-center justify-center'>
+          <TouchableOpacity onPress={toggleCameraType}>
+            {/* <Ionicons name="repeat-outline" size={40} color="white" /> */}
+            <Ionicons name='person-add' color='white' size={32} />
+          </TouchableOpacity>
+        </View>
+        <View className='absolute mt-12 right-1 h-14 w-14 rounded-full items-center justify-center'>
           <TouchableOpacity onPress={toggleCameraType}>
             {/* <Ionicons name="repeat-outline" size={40} color="white" /> */}
             <Ionicons name='camera-reverse-outline' color='white' size={40} />

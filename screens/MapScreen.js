@@ -1,15 +1,16 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import MapView from 'react-native-maps';
 import Header from '../components/Header';
 import ItemSeparatorComponent from '../components/ItemSeparatorComponent';
+import MapButtons from '../components/MapButtons';
 
 const MapScreen = () => {
   return (
     <View className="flex-1 bg-black">
       <StatusBar style="light" />
-      <View className=' z-50 mt-14 pt-1'>
+      <View className=" z-50 mt-14 pt-1">
         <Header
           title="Map"
           textColor="white"
@@ -19,7 +20,7 @@ const MapScreen = () => {
           opacity={100}
           iconColor="white"
         />
-        <ItemSeparatorComponent color='#222'/>
+        <ItemSeparatorComponent color="#222" />
       </View>
       <MapView
         initialRegion={{
@@ -30,6 +31,7 @@ const MapScreen = () => {
         }}
         style={{ flex: 1 }}
       />
+      <MapButtons />
     </View>
   );
 };

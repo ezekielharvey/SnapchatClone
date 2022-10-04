@@ -80,7 +80,7 @@ const FriendsStories = () => {
   };
 
   return (
-    <View>
+    <View className='mt-2'>
       <Text style={{ fontSize: 18 }} className="font-semibold pl-2">
         Friends
       </Text>

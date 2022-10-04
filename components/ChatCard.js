@@ -25,8 +25,8 @@ const ChatCard = ({name, streak}) => {
         <Text style={{ fontFamily: 'Montserrat', fontWeight: 'bold'}} className='ml-3 text-lg'>{name}</Text>
       </View>
       <View className='left-24 flex-row -mt-8'>
-        <Ionicons name='chatbox-outline' color='#23b6ff' size={20} />
-        <Text className='ml-1 mt-0.5 text-gray-400 text-xs'>Received · 2m · <Text className='text-black text-xs'>{streak}</Text>🔥</Text>
+        <Ionicons name='chatbox' color='#23b6ff' size={20} />
+        <Text className='ml-1 mt-0.5 text-gray-400 text-xs'>New Snap · 2m · <Text className='text-black text-xs'>{streak}</Text>🔥</Text>
       </View>
     </TouchableOpacity>
   );

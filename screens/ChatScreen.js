@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, Text, SafeAreaView, FlatList } from 'react-native';
 import ChatCard from '../components/ChatCard';
@@ -74,7 +75,8 @@ const MessagesScreen = () => {
 
   return (
     <SafeAreaView style={{flex: 1}} className='bg-white'>
-      <Header title="Chat" name="chatbox-ellipses" />
+      <StatusBar style='dark' />
+      <Header title="Chat" name="chatbox-ellipses" color='#F1F5F9' iconColor='#4E565F' />
       <View className='mt-7'>
         <FlatList
           data={DATA}

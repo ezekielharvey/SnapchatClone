@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [loaded] = useFonts({
     Montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
-  })
+  });
   if (!loaded) {
     return null;
   }
@@ -23,7 +23,6 @@ export default function App() {
           <Stack.Screen name="Feed" component={AppNavigator} />
         </Stack.Navigator>
       </NavigationContainer>
-      <StatusBar style="auto" />
     </View>
   );
 }

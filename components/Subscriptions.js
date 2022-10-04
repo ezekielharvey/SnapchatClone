@@ -12,7 +12,7 @@ const data = [
   },
   {
     id: 2,
-    sub: 'Cryptocurrency: Bitcoin',
+    sub: 'Cryptocurrency Bitcoin',
     time: '5h ago',
     image: 'https://picsum.photos/600',
   },
@@ -57,6 +57,7 @@ const Subscriptions = () => {
           keyExtractor={item => item.id}
           renderItem={renderItem}
           horizontal
+          showsHorizontalScrollIndicator={false}
           ListHeaderComponent={<View style={{width: 4}} />}
           ListFooterComponent={<View style={{width: 4}} />}
         />

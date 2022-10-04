@@ -1,8 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 
-const ItemSeparatorComponent = () => {
-  return <View style={styles.separator} className="bg-slate-50 my-2 mt-4" />;
+const ItemSeparatorComponent = ({ color }) => {
+  return (
+    <View style={[styles.separator, { backgroundColor: color }]} className="mt-2 mt-4" />
+  );
 };
 
 const styles = StyleSheet.create({

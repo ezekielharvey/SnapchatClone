@@ -43,21 +43,25 @@ const data = [
 ];
 
 const ForYou = () => {
-
   const renderItem = ({ item }) => {
-    return <ForYouCard />
-  }
+    return <ForYouCard sub={item.sub} time={item.time} image={item.image} />;
+  };
 
   return (
     <View className="mt-4">
       <Text style={{ fontSize: 18 }} className="font-semibold pl-2">
         For You
       </Text>
-      <FlatList 
-        data={data}
-        keyExtractor={item => item.id}
-        renderItem={renderItem}
-      />
+      <View className='pl-1'>
+        <FlatList
+          data={data}
+          keyExtractor={item => item.id}
+          renderItem={renderItem}
+          numColumns={2}
+          ListFooterComponent={<View style={{height: 6}} />}
+          scrollEnabled={false}
+        />
+      </View>
     </View>
   );
 };

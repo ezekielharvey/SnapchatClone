@@ -9,11 +9,11 @@ import {
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Entypo from '@expo/vector-icons/Entypo';
 
-const Header = ({ title, name, color, disabled, opacity, textColor, iconColor }) => {
+const Header = ({ title, name, color, disabled, opacity, textColor, iconColor, logout }) => {
   return (
-    <View className="mt-2 ">
-      <View className="flex-row items-center">
-        <TouchableOpacity className="absolute left-2 h-12 w-12 rounded-full">
+    <View className="mt-2 z-50">
+      <View className="flex-row items-center z-50">
+        <TouchableOpacity className="absolute left-2 h-12 w-12 rounded-full z-50" onPress={logout}>
           <View className="flex-1">
             <Image
               source={{
@@ -24,7 +24,7 @@ const Header = ({ title, name, color, disabled, opacity, textColor, iconColor })
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-          className="absolute left-16 h-12 w-12 rounded-full items-center justify-center"
+          className="absolute left-16 h-12 w-12 rounded-full items-center justify-center z-50"
           style={{ marginLeft: 3 }}
         >
           <View style={{ backgroundColor: color }} className="bg-slate-100 rounded-full items-center justify-center">

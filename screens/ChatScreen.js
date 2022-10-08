@@ -5,7 +5,7 @@ import ChatCard from '../components/ChatCard';
 import Header from '../components/Header';
 import ItemSeparatorComponent from '../components/ItemSeparatorComponent';
 
-const MessagesScreen = () => {
+const MessagesScreen = ({ navigation }) => {
   const DATA = [
     {
       id: 123,
@@ -76,13 +76,13 @@ const MessagesScreen = () => {
   return (
     <SafeAreaView style={{flex: 1}} className='bg-white'>
       <StatusBar style='dark' />
-      <Header title="Chat" name="chatbox-ellipses" color='#F1F5F9' iconColor='#4E565F' />
+      <Header title="Chat" name="chatbox-ellipses" color='#F1F5F9' iconColor='#4E565F' logout={() => navigation.navigate('Onboarding')} />
       <View className='mt-7'>
         <FlatList
           data={DATA}
           keyExtractor={item => item.id}
           renderItem={renderItem}
-          ItemSeparatorComponent={ItemSeparatorComponent}
+          ItemSeparatorComponent={() => {return(<ItemSeparatorComponent color='#F9F9F9'/>)}}
           ListFooterComponent={<View style={{height: 50}} />}
           showsVerticalScrollIndicator={false}
         />

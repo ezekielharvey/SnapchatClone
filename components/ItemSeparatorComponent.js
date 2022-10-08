@@ -9,7 +9,7 @@ const ItemSeparatorComponent = ({ color }) => {
 
 const styles = StyleSheet.create({
   separator: {
-    height: 1.5,
+    height: 1,
   },
 });
 

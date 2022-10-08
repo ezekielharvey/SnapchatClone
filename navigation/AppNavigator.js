@@ -2,27 +2,29 @@ import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
-import MessagesScreen from '../screens/ChatScreen';
+import ChatScreen from '../screens/ChatScreen';
 import StoriesScreen from '../screens/StoriesScreen';
 import DiscoverScreen from '../screens/DiscoverScreen';
 import MapScreen from '../screens/MapScreen';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import ChatNavigator from './ChatNavigator';
+import HomeNavigator from './HomeNavigator';
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeNav"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, size }) => {
           let iconName;
           let color;
 
-                if (route.name === 'Home') {
+                if (route.name === 'HomeNav') {
                   iconName = focused ? 'camera-outline' : 'camera-outline';
                   color = focused ? '#FFFC00' : '#6f7173'
-                } else if (route.name === 'Chat') {
+                } else if (route.name === 'ChatNav') {
                   iconName = focused ? 'chatbox-outline' : 'chatbox-outline';
                   color = focused ? '#23B6FF' : '#6f7173'
                 } else if (route.name === 'Map') {
@@ -46,8 +48,8 @@ const AppNavigator = () => {
       })}
     >
       <Tab.Screen name="Map" component={MapScreen} />
-      <Tab.Screen name="Chat" component={MessagesScreen} />
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="ChatNav" component={ChatNavigator} />
+      <Tab.Screen name="HomeNav" component={HomeNavigator} />
       <Tab.Screen name="Stories" component={StoriesScreen} />
       <Tab.Screen name="Discover" component={DiscoverScreen} />
     </Tab.Navigator>

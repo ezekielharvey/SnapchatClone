@@ -5,6 +5,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AppNavigator from './navigation/AppNavigator';
 import { useFonts } from 'expo-font';
+import OnboardingScreen from './screens/OnboardingScreen';
+import AuthNavigator from './navigation/AuthNavigator';
+import { useEffect, useState } from 'react';
+import { auth } from './firebase';
+import HomeNavigator from './navigation/HomeNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +25,11 @@ export default function App() {
     <View className="flex-1">
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Feed" component={AppNavigator} />
+          {!auth.user ? (
+            <Stack.Screen name="Feed" component={AuthNavigator} />
+          ) : (
+            <Stack.Screen name="HomeFeed" component={HomeNavigator} />
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </View>

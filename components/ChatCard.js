@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import { useFonts } from 'expo-font';
 import Ionicons from '@expo/vector-icons/Ionicons'
 
-const ChatCard = ({name, streak}) => {
+const ChatCard = ({name, streak, onPress, navigation}) => {
   const [loaded] = useFonts({
     Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
   })
@@ -12,7 +12,7 @@ const ChatCard = ({name, streak}) => {
   }
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View className='flex-row'>
         <View className="h-16 w-16 rounded-full bg-slate-100 ml-5">
           <Image

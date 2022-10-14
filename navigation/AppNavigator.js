@@ -12,7 +12,8 @@ import HomeNavigator from './HomeNavigator';
 
 const Tab = createBottomTabNavigator();
 
-const AppNavigator = () => {
+const AppNavigator = (props) => {
+  const hide = props.routeName != "Messages"
   return (
     <Tab.Navigator
       initialRouteName="HomeNav"
@@ -48,7 +49,10 @@ const AppNavigator = () => {
       })}
     >
       <Tab.Screen name="Map" component={MapScreen} />
-      <Tab.Screen name="ChatNav" component={ChatNavigator} />
+      <Tab.Screen name="ChatNav" component={ChatNavigator} options={{
+          headerShown: false,
+          tabBarStyle: { display: hide ? "flex" : "none" }
+        }} />
       <Tab.Screen name="HomeNav" component={HomeNavigator} />
       <Tab.Screen name="Stories" component={StoriesScreen} />
       <Tab.Screen name="Discover" component={DiscoverScreen} />

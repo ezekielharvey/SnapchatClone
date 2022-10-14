@@ -7,8 +7,9 @@ import RegisterScreen from '../screens/RegisterScreen';
 import ForgotPassword from '../screens/ForgotPassword';
 import AppNavigator from './AppNavigator';
 import BirthdayScreen from '../screens/BirthdayScreen';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const AuthNavigator = () => {
   return (

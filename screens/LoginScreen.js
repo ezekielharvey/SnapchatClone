@@ -9,18 +9,22 @@ import {
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { auth } from '../firebase';
+import { getDatabase, ref, onValue, set } from 'firebase/database';
+
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
         navigation.navigate('App');
       }
-    })
-    return unsubscribe
+    });
+    return unsubscribe;
   }, []);
 
   const handleLogin = () => {

@@ -4,6 +4,7 @@ import { View, Text, SafeAreaView, FlatList } from 'react-native';
 import ChatCard from '../components/ChatCard';
 import Header from '../components/Header';
 import ItemSeparatorComponent from '../components/ItemSeparatorComponent';
+import { auth } from '../firebase';
 
 const MessagesScreen = ({ navigation }) => {
   const DATA = [
@@ -69,6 +70,7 @@ const MessagesScreen = ({ navigation }) => {
     <ChatCard 
       name={item.name}
       streak={item.streak}
+      onPress={() => navigation.navigate('Messages', {name: item.name})}
     />
     );
   };

@@ -18,7 +18,7 @@ const ChatNavigator = (props) => {
       initialRouteName="Chat"
     >
       <Stack.Screen component={ChatScreen} name="Chat" />
-      <Stack.Screen component={MessagesScreen} name="Messages" options={{ tabBarStyle: { display: hide ? "none" : "flex" }}}  />
+      <Stack.Screen component={MessagesScreen} name="Messages" />
       <Stack.Screen component={OnboardingScreen} name="Onboarding" />
     </Stack.Navigator>
   );

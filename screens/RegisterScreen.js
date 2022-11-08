@@ -12,6 +12,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 import { auth } from '../firebase';
 import { getDatabase, ref, onValue, set } from 'firebase/database';
+import firebase from 'firebase';
 
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -19,29 +20,33 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [imageURL, setImageURL] = useState('');
 
-  function storeTest(userId, score) {
-    const db = getDatabase();
-    const reference = ref(db, 'users/' + userId)
-    set(reference, {
-      highscore: score
-    })
-  }
-
   const handleSignUp = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(userCredentials => {
         const user = userCredentials.user;
+        const uid = userCredentials.user.uid;
+        const data = {
+          id: uid,
+          email,
+          password,
+        };
+        const usersRef = firebase.firestore().collection('users');
+        usersRef
+          .doc(user.email)
+          .set(data)
+          .then(() => {
+            navigation.navigate('App', { user: data });
+          })
+          .catch(error => {
+            alert(error);
+          });
         user.updateProfile({
           displayName: email,
-          photoURL: imageURL
-            ? imageURL
-            : 'https://imgs.search.brave.com/QcNF4bSKW9PUKg_O9Xjy__JXQDShjs84dQr629ckzRk/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5E/ZWhKUlY2TEpxaHUw/Z3gtM2xTZDRBSGFI/YSZwaWQ9QXBp',
         });
         console.log(user.email);
       })
       .catch(error => alert(error.message));
-      storeTest();
   };
   const [loaded] = useFonts({
     Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
@@ -59,7 +64,7 @@ const RegisterScreen = ({ navigation }) => {
       </View>
       <KeyboardAvoidingView>
         <View className="items-center top-10">
-          <Text className="text-xl">What's your name?</Text>
+          <Text className="text-xl">What's your email?</Text>
         </View>
         <View className="self-center top-20 w-3/4">
           <View className="mb-4">
@@ -68,6 +73,8 @@ const RegisterScreen = ({ navigation }) => {
               className="w-full border-b-2 border-gray-200 py-2"
               value={email}
               onChangeText={text => setEmail(text)}
+              autoCapitalize={false}
+              spellCheck={false}
             />
           </View>
           <View>

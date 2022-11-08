@@ -10,6 +10,7 @@ import {
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { auth } from '../firebase';
 import { getDatabase, ref, onValue, set } from 'firebase/database';
+import firebase from 'firebase';
 
 
 const LoginScreen = ({ navigation }) => {

@@ -12,16 +12,18 @@ import Header from '../components/Header';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import DiscoverSub from '../components/DiscoverSub';
 import ItemSeparatorComponent from '../components/ItemSeparatorComponent';
+import useStatusBar from '../hooks/useStatusBar';
 
 const DiscoverScreen = () => {
   const [notified, setNotified] = useState(false);
+
+  useStatusBar('light-content')
 
   const handleNotified = () => {
     notified ? setNotified : false;
   };
   return (
     <>
-      <StatusBar style="light" />
       <SafeAreaView className="bg-black flex-1">
         <Header
           title="Discover"

@@ -6,8 +6,10 @@ import FriendsStories from '../components/FriendsStories';
 import Subscriptions from '../components/Subscriptions';
 import ForYou from '../components/ForYou';
 import { StatusBar } from 'expo-status-bar';
+import useStatusBar from '../hooks/useStatusBar';
 
 const StoriesScreen = () => {
+  useStatusBar('dark-content')
   return (
     <>
       <StatusBar style="dark" />

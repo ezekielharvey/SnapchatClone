@@ -10,9 +10,8 @@ import {
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
-import { auth } from '../firebase';
-import { getDatabase, ref, onValue, set } from 'firebase/database';
-import firebase from 'firebase';
+import { auth, db, usersCollection } from '../firebase';
+
 
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -31,7 +30,7 @@ const RegisterScreen = ({ navigation }) => {
           email,
           password,
         };
-        const usersRef = firebase.firestore().collection('users');
+        const usersRef = usersCollection;
         usersRef
           .doc(user.email)
           .set(data)

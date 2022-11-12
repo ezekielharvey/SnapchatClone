@@ -9,8 +9,7 @@ import {
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { auth } from '../firebase';
-import { getDatabase, ref, onValue, set } from 'firebase/database';
-import firebase from 'firebase';
+
 
 
 const LoginScreen = ({ navigation }) => {
@@ -59,6 +58,8 @@ const LoginScreen = ({ navigation }) => {
               value={email}
               autoCapitalize={false}
               spellCheck={false}
+              autoCorrect={false}
+              returnKeyType='done'
             />
           </View>
           <View>

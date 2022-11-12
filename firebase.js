@@ -1,5 +1,10 @@
 // Import the functions you need from the SDKs you need
-import * as firebase from 'firebase';
+import firebase from 'firebase/compat/app';
+import { getApps } from 'firebase/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
+// import * as firebase from 'firebase';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -14,13 +19,22 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-let app;
-if (firebase.apps.length === 0) {
-  app = firebase.initializeApp(firebaseConfig);
-} else {
-  app = firebase.app()
-}
+if (!getApps().length) firebase.initializeApp(firebaseConfig);
 
+const db = firebase.firestore();
 const auth = firebase.auth();
+const usersCollection = db.collection('users');
+const messageCollection = db.collection('messages');
+const friendCollection = db.collection('friends');
+const pendingCollection = db.collection('pending');
+const addFriendCollection = db.collection('addfriend');
 
-export { auth };
+export {
+  auth,
+  db,
+  usersCollection,
+  messageCollection,
+  friendCollection,
+  pendingCollection,
+  addFriendCollection
+};

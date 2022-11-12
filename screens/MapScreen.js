@@ -5,8 +5,10 @@ import MapView from 'react-native-maps';
 import Header from '../components/Header';
 import ItemSeparatorComponent from '../components/ItemSeparatorComponent';
 import MapButtons from '../components/MapButtons';
+import useStatusBar from '../hooks/useStatusBar';
 
 const MapScreen = () => {
+  useStatusBar('light-content')
   return (
     <View className="flex-1 bg-black">
       <StatusBar style="light" />

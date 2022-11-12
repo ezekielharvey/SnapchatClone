@@ -11,12 +11,12 @@ import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { auth } from '../firebase';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-const ProfileScreen = ({ navigation }) => {
+const BottomSheetComponent = ({ navigation }) => {
   // hooks
   const sheetRef = useRef(null);
 
   // variables
-  const snapPoints = useMemo(() => ['50%', '70%', '90%'], []);
+  const snapPoints = useMemo(() => ['25%', '50%', '75%'], []);
 
   // callbacks
   const handleSheetChange = useCallback(index => {
@@ -45,7 +45,7 @@ const ProfileScreen = ({ navigation }) => {
       <Button title="Snap To 50%" onPress={() => handleSnapPress(1)} />
       <Button title="Snap To 25%" onPress={() => handleSnapPress(0)} />
       <Button title="Close" onPress={() => handleClosePress()} /> */}
-      <View className="absolute z-50 top-12 left-4">
+      <View className="absolute z-50 top-10 left-4">
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Ionicons name="chevron-back-outline" color="#21AEFF" size={40} />
         </TouchableOpacity>
@@ -68,7 +68,7 @@ const ProfileScreen = ({ navigation }) => {
             </Text>
             <TouchableOpacity
               onPress={handleLogOut}
-              className="bg-[#21AEFF] w-3/4 items-center rounded-full top-6"
+              className="bg-[#21AEFF] w-3/4 items-center rounded-full"
             >
               <Text className="text-white p-3 text-lg font-bold">Log Out</Text>
             </TouchableOpacity>
@@ -79,5 +79,11 @@ const ProfileScreen = ({ navigation }) => {
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 200,
+  },
+});
 
-export default ProfileScreen;
+export default BottomSheetComponent;

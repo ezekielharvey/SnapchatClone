@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import * as MediaLibrary from 'expo-media-library';
+import useStatusBar from '../hooks/useStatusBar';
 
 export default function HomeScreen({ navigation }) {
   const [type, setType] = useState(CameraType.back);
@@ -19,6 +20,8 @@ export default function HomeScreen({ navigation }) {
   const [image, setImage] = useState(null);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
+
+  useStatusBar('dark-content')
 
   useEffect(() => {
     (async () => {

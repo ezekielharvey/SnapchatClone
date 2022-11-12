@@ -1,25 +1,17 @@
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import HomeScreen from './screens/HomeScreen';
+import 'react-native-get-random-values'
+import { View } from 'react-native';
 import {
   createNavigationContainerRef,
   NavigationContainer,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AppNavigator from './navigation/AppNavigator';
 import { useFonts } from 'expo-font';
-import OnboardingScreen from './screens/OnboardingScreen';
 import AuthNavigator from './navigation/AuthNavigator';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { auth } from './firebase';
 import HomeNavigator from './navigation/HomeNavigator';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { OverlayProvider } from 'stream-chat-expo';
-import { StreamChat } from 'stream-chat';
 
-const client = StreamChat.getInstance(API_KEY);
-const API_KEY = 'ug6wjthurcst';
 
 const Stack = createNativeStackNavigator();
 

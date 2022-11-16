@@ -16,10 +16,14 @@ import MessageCard from '../components/MessageCard';
 import { auth, db, messageCollection } from '../firebase';
 import { useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
+import { useFonts } from 'expo-font';
 
 const MessagesScreen = ({ navigation, route }) => {
   const [msgInput, setMsgInput] = useState('');
   const [messages, setMessages] = useState([]);
+  const [loaded] = useFonts({
+    Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
+  });
 
   const sendMsg = () => {
     Keyboard.dismiss();
@@ -31,7 +35,7 @@ const MessagesScreen = ({ navigation, route }) => {
         id: uuid(),
         timestamp: new Date(),
         message: msgInput,
-        displayName: auth.currentUser.displayName,
+        fullName: auth.currentUser.displayName,
         email: auth.currentUser.email,
         photoURL: auth.currentUser.photoURL,
         room: [auth.currentUser.email, route.params.email]
@@ -106,7 +110,7 @@ const MessagesScreen = ({ navigation, route }) => {
             className="h-12 w-12 rounded-full ml-6"
           />
         </TouchableOpacity>
-        <Text className="ml-4 font-bold text-xl">{route.params.email}</Text>
+        <Text className="ml-4 font-bold text-xl">{route.params.name}</Text>
 
         <View className="flex-row-reverse items-center flex-1 bg-white">
           <TouchableOpacity

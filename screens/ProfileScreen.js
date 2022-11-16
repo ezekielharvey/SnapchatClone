@@ -16,7 +16,7 @@ const ProfileScreen = ({ navigation }) => {
   const sheetRef = useRef(null);
 
   // variables
-  const snapPoints = useMemo(() => ['50%', '70%', '90%'], []);
+  const snapPoints = useMemo(() => ['50%', '70%', '88%'], []);
 
   // callbacks
   const handleSheetChange = useCallback(index => {
@@ -64,7 +64,7 @@ const ProfileScreen = ({ navigation }) => {
         <BottomSheetView>
           <View className="top-4 w-full items-center">
             <Text className="font-bold self-center">
-              Email: {auth.currentUser?.email}
+              Username: {auth.currentUser?.displayName}
             </Text>
             <TouchableOpacity
               onPress={handleLogOut}

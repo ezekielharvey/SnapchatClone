@@ -14,14 +14,13 @@ import * as MediaLibrary from 'expo-media-library';
 import useStatusBar from '../hooks/useStatusBar';
 
 export default function HomeScreen({ navigation }) {
+  useStatusBar('light-content');
   const [type, setType] = useState(CameraType.back);
   const [hasCameraPermission, setHasCameraPermission] =
     Camera.useCameraPermissions();
   const [image, setImage] = useState(null);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
-
-  useStatusBar('dark-content')
 
   useEffect(() => {
     (async () => {

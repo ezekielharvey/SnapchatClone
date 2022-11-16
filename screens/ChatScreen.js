@@ -13,7 +13,7 @@ import ItemSeparatorComponent from '../components/ItemSeparatorComponent';
 import { auth, db, messageCollection } from '../firebase';
 import useStatusBar from '../hooks/useStatusBar';
 
-const MessagesScreen = ({ navigation }) => {
+const ChatScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
 
@@ -41,9 +41,9 @@ const MessagesScreen = ({ navigation }) => {
   const renderItem = ({ item }) => {
     return (
       <ChatCard
-        name={item.email}
+        name={item.fullName}
         streak={item.streak}
-        onPress={() => navigation.navigate('Messages', { email: item.email, name: 'test', uid: item.uid })}
+        onPress={() => navigation.navigate('Messages', { email: item.email, name: item.fullName, uid: item.uid })}
       />
     );
   };
@@ -55,7 +55,7 @@ const MessagesScreen = ({ navigation }) => {
         name="chatbox-ellipses"
         color="#F1F5F9"
         iconColor="#4E565F"
-        logout={() => navigation.navigate('Onboarding')}
+        logout={() => navigation.navigate('Profile')}
       />
       <View className="mt-7">
         <FlatList
@@ -73,4 +73,4 @@ const MessagesScreen = ({ navigation }) => {
   );
 };
 
-export default MessagesScreen;
+export default ChatScreen;

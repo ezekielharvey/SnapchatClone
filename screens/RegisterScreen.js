@@ -12,10 +12,9 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 import { auth, db, usersCollection } from '../firebase';
 
-
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const [fullName, setFullName] = useState('');
   const [password, setPassword] = useState('');
   const [imageURL, setImageURL] = useState('');
 
@@ -27,6 +26,7 @@ const RegisterScreen = ({ navigation }) => {
         const uid = userCredentials.user.uid;
         const data = {
           id: uid,
+          fullName,
           email,
           password,
         };
@@ -41,9 +41,9 @@ const RegisterScreen = ({ navigation }) => {
             alert(error);
           });
         user.updateProfile({
-          displayName: email,
+          displayName: fullName,
         });
-        console.log(user.email);
+        console.log(user.fullName);
       })
       .catch(error => alert(error.message));
   };
@@ -65,7 +65,19 @@ const RegisterScreen = ({ navigation }) => {
         <View className="items-center top-10">
           <Text className="text-xl">What's your email?</Text>
         </View>
+
         <View className="self-center top-20 w-3/4">
+          <View className="mb-4">
+            <Text className="text-gray-400 text-xs font-bold mb-1">FULL NAME</Text>
+            <TextInput
+              className="w-full border-b-2 border-gray-200 py-2"
+              value={fullName}
+              onChangeText={text => setFullName(text)}
+              autoCapitalize={false}
+              spellCheck={false}
+              autoCorrect={false}
+            />
+          </View>
           <View className="mb-4">
             <Text className="text-gray-400 text-xs font-bold mb-1">EMAIL</Text>
             <TextInput
@@ -74,6 +86,8 @@ const RegisterScreen = ({ navigation }) => {
               onChangeText={text => setEmail(text)}
               autoCapitalize={false}
               spellCheck={false}
+              autoCorrect={false}
+
             />
           </View>
           <View>

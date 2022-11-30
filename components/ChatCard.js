@@ -43,7 +43,7 @@ const streakCount = () => {
         <View className="left-24 flex-row -mt-8">
           <Ionicons name="chatbox" color="#23b6ff" size={20} />
           <Text className="ml-1 mt-0.5 text-gray-400 text-xs">
-            New Snap · 2m · <Text className="text-black text-xs">{streakCount}</Text>
+            New Snap · 2m · <Text className="text-black text-xs">{streak}</Text>
             🔥
           </Text>
         </View>

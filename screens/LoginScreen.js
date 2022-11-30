@@ -10,13 +10,9 @@ import {
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { auth } from '../firebase';
 
-
-
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -32,10 +28,11 @@ const LoginScreen = ({ navigation }) => {
       .signInWithEmailAndPassword(email, password)
       .then(userCredentials => {
         const user = userCredentials.user;
-        console.log('Logged in as:', user.email);
+        console.log('Logged in as:', user.displayName);
       })
       .catch(error => alert(error.message));
   };
+  
   return (
     <SafeAreaView className="bg-white flex-1">
       <View className="top-4 left-4">
@@ -59,7 +56,7 @@ const LoginScreen = ({ navigation }) => {
               autoCapitalize={false}
               spellCheck={false}
               autoCorrect={false}
-              returnKeyType='done'
+              returnKeyType="done"
             />
           </View>
           <View>

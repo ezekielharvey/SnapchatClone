@@ -30,6 +30,7 @@ const RegisterScreen = ({ navigation }) => {
           email,
           password,
         };
+
         const usersRef = usersCollection;
         usersRef
           .doc(user.email)
@@ -47,9 +48,11 @@ const RegisterScreen = ({ navigation }) => {
       })
       .catch(error => alert(error.message));
   };
+
   const [loaded] = useFonts({
     Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
   });
+
   if (!loaded) {
     return null;
   }
@@ -68,11 +71,13 @@ const RegisterScreen = ({ navigation }) => {
 
         <View className="self-center top-20 w-3/4">
           <View className="mb-4">
-            <Text className="text-gray-400 text-xs font-bold mb-1">FULL NAME</Text>
+            <Text className="text-gray-400 text-xs font-bold mb-1">
+              FULL NAME
+            </Text>
             <TextInput
               className="w-full border-b-2 border-gray-200 py-2"
-              value={fullName}
               onChangeText={text => setFullName(text)}
+              value={fullName}
               autoCapitalize={false}
               spellCheck={false}
               autoCorrect={false}
@@ -82,12 +87,11 @@ const RegisterScreen = ({ navigation }) => {
             <Text className="text-gray-400 text-xs font-bold mb-1">EMAIL</Text>
             <TextInput
               className="w-full border-b-2 border-gray-200 py-2"
-              value={email}
               onChangeText={text => setEmail(text)}
+              value={email}
               autoCapitalize={false}
               spellCheck={false}
               autoCorrect={false}
-
             />
           </View>
           <View>
@@ -96,8 +100,8 @@ const RegisterScreen = ({ navigation }) => {
             </Text>
             <TextInput
               className="w-full border-b-2 border-gray-200 py-2"
-              value={password}
               onChangeText={text => setPassword(text)}
+              value={password}
               secureTextEntry
             />
           </View>
